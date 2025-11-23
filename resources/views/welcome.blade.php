@@ -18,7 +18,7 @@
 
       <!-- Menu -->
       <ul class="flex space-x-10 text-lg">
-        <li><a href="#" class="hover:text-yellow-400 duration-200">Home</a></li>
+        <li><a href="#" class="hover:text-yellow-400 duration-200">Dashboard</a></li>
         <li><a href="#" class="hover:text-yellow-400 duration-200">Menu</a></li>
         <li><a href="#" class="hover:text-yellow-400 duration-200">About Us</a></li>
         <li><a href="#" class="hover:text-yellow-400 duration-200">Contact Us</a></li>
