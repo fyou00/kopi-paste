@@ -56,13 +56,15 @@ Route::middleware(['role:cashier'])
 
       Route::get('/menu', function () {
         return view('cashier.menu');
-      })->name('cashier.menu');
+      })->name('menu');
+
       Route::get('/pesanan', function () {
         return view('cashier.pesanan');
-      })->name('cashier.pesanan');
-      Route::get('/transaction', function () {
-        return view('cashier.transaction');
-      })->name('cashier.transaction');
+      })->name('pesanan');
+
+      Route::get('/dashboard', function () {
+        return view('cashier.dashboard');
+      })->name('dashboard');
 
     }
   );
