@@ -34,15 +34,18 @@ Route::middleware(['role:admin'])
   ->prefix('admin')
   ->group(
     function () {
+
       Route::get('/dashboard', function () {
         return view('admin.dashboard');
-      })->name('admin.dashboard');
+      });
+
       Route::get('/menu', function () {
         return view('admin.menu');
-      })->name('admin.menu');
+      });
+
       Route::get('/table', function () {
         return view('admin.table');
-      })->name('admin.table');
+      });
     }
   );
 
@@ -50,14 +53,18 @@ Route::middleware(['role:cashier'])
   ->prefix('cashier')
   ->group(
     function () {
+
       Route::get('/menu', function () {
         return view('cashier.menu');
-      })->name('cashier.menu');
+      })->name('menu');
+
       Route::get('/pesanan', function () {
         return view('cashier.pesanan');
-      })->name('cashier.pesanan');
-      Route::get('/transaction', function () {
-        return view('cashier.transaction');
-      })->name('cashier.transaction');
+      })->name('pesanan');
+
+      Route::get('/dashboard', function () {
+        return view('cashier.dashboard');
+      })->name('dashboard');
+
     }
   );
