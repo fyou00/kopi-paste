@@ -61,9 +61,9 @@ Route::middleware(['role:cashier'])
       Route::get('/pesanan', function () {
         return view('cashier.pesanan');
       })->name('cashier.pesanan');
-      Route::get('/dashboard', function () {
-        return view('cashier.dashboard');
-      })->name('cashier.dashboard');
+      Route::get('/transaction', function () {
+        return view('cashier.transaction');
+      })->name('cashier.transaction');
 
     }
   );
