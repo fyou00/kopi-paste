@@ -30,21 +30,41 @@ Route::middleware(['auth'])->group(function () {
     ->name('two-factor.show');
 });
 
+Route::middleware(['role:admin'])
+  ->prefix('admin')
+  ->group(
+    function () {
+
+      Route::get('/dashboard', function () {
+        return view('admin.dashboard');
+      });
+
+      Route::get('/menu', function () {
+        return view('admin.menu');
+      });
+
+      Route::get('/table', function () {
+        return view('admin.table');
+      });
+    }
+  );
+
 Route::middleware(['role:cashier'])
   ->prefix('cashier')
-  ->group(function () {
+  ->group(
+    function () {
 
-    Route::get('/menu', function () {
-      return view('cashier.menu');
-    });
+      Route::get('/menu', function () {
+        return view('cashier.menu');
+      })->name('menu');
 
-    Route::get('/product', function () {
-      return view('cashier.product');
-    });
+      Route::get('/pesanan', function () {
+        return view('cashier.pesanan');
+      })->name('pesanan');
 
-    Route::get('/transaction', function () {
-      return view('cashier.transaction');
-    });
+      Route::get('/dashboard', function () {
+        return view('cashier.dashboard');
+      })->name('dashboard');
 
-  }
-);
+    }
+  );
