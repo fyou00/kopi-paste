@@ -18,12 +18,12 @@
         <flux:navlist.group class="grid py-2 gap-1">
           <flux:navlist.item icon="home" :href="route('admin.dashboard')" :current="request()->routeIs('admin.dashboard')"
             wire:navigate>{{ __('Dashboard') }}</flux:navlist.item>
-          <flux:navlist.item icon="bars-4" :href="route('admin.menu')" :current="request()->routeIs('admin.menu')"
+          <flux:navlist.item icon="bars-4" :href="route('admin.menu.index')" :current="request()->routeIs('admin.menu.*')"
             wire:navigate>
             {{ __('Menu') }}
           </flux:navlist.item>
-          <flux:navlist.item icon="clipboard-document-list" :href="route('admin.table')"
-            :current="request()->routeIs('admin.table')" wire:navigate>{{ __('Table') }}</flux:navlist.item>
+          <flux:navlist.item icon="clipboard-document-list" :href="route('admin.table.index')"
+            :current="request()->routeIs('admin.table.*')" wire:navigate>{{ __('Table') }}</flux:navlist.item>
         </flux:navlist.group>
       </flux:navlist>
 
