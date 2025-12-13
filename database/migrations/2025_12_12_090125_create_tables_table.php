@@ -11,8 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('role')->default('user');
+        Schema::create('tables', function (Blueprint $table) {
+            $table->id();
+            $table->integer('nomor')->unique();
+            $table->integer('kapasitas');
+            $table->enum('status', ['tersedia', 'terisi', 'reserved'])->default('tersedia');
+            $table->timestamps();
         });
     }
 
@@ -21,8 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('role');
-        });
+        Schema::dropIfExists('tables');
     }
 };
