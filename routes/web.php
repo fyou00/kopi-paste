@@ -7,7 +7,7 @@ use App\Livewire\Settings\TwoFactor;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
 
-// use App\Http\Controllers\HomeController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PublicMenuController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\MenuController as AdminMenuController;
@@ -17,7 +17,7 @@ use App\Http\Controllers\Cashier\OrderController;
 use App\Http\Controllers\Cashier\TransactionController;
 
 // ====== PUBLIC ROUTES (Tanpa Login) ======
-// Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 // Route::get('/menu', [PublicMenuController::class, 'index'])->name('menu.public');
 // Route::get('/tentang', [HomeController::class, 'about'])->name('about');
 
