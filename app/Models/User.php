@@ -54,4 +54,16 @@ class User extends Authenticatable
     {
         return $this->role === 'cashier';
     }
+
+    /**
+     * Get user initials
+     */
+    public function initials(): string
+    {
+        $words = explode(' ', $this->name);
+        if (count($words) >= 2) {
+            return strtoupper(substr($words[0], 0, 1) . substr($words[1], 0, 1));
+        }
+        return strtoupper(substr($this->name, 0, 2));
+    }
 }
