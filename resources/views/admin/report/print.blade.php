@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laporan Penjualan - {{ $startDate->format('d/m/Y') }} s/d {{ $endDate->format('d/m/Y') }}</title>
+    <title>Laporan Penjualan Kopi Paste - {{ $startDate->format('d/m/Y') }} s/d {{ $endDate->format('d/m/Y') }}</title>
     <style>
         * {
             margin: 0;
@@ -11,266 +11,356 @@
             box-sizing: border-box;
         }
         body {
-            font-family: Arial, sans-serif;
-            padding: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            background: #FAF5EE;
+            color: #1A110B;
+            padding: 28px;
             font-size: 12px;
+            line-height: 1.5;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+        .sheet {
+            max-width: 960px;
+            margin: 0 auto;
+            background: #FFFFFF;
+            border: 1px solid #EFE4D6;
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 10px 30px rgba(26, 17, 11, 0.08);
+        }
+        .toolbar {
+            max-width: 960px;
+            margin: 0 auto 16px;
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+        .btn {
+            border: none;
+            border-radius: 10px;
+            padding: 10px 18px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .btn-print {
+            background: #1A110B;
+            color: #E8B86D;
+        }
+        .btn-close {
+            background: #EFE4D6;
+            color: #1A110B;
         }
         .header {
-            text-align: center;
-            margin-bottom: 30px;
-            border-bottom: 2px solid #333;
-            padding-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            border-bottom: 2px solid #3B2314;
+            padding-bottom: 18px;
+            margin-bottom: 24px;
+            gap: 16px;
         }
-        .header h1 {
+        .brand h1 {
             font-size: 24px;
-            color: #333;
-            margin-bottom: 5px;
+            color: #3B2314;
+            letter-spacing: 0.5px;
+            margin-bottom: 2px;
         }
-        .header h2 {
-            font-size: 18px;
-            color: #666;
-            font-weight: normal;
+        .brand p {
+            font-size: 11px;
+            color: #6B4423;
         }
-        .header p {
-            color: #666;
-            margin-top: 10px;
+        .report-meta {
+            text-align: right;
+        }
+        .report-meta h2 {
+            font-size: 16px;
+            color: #1A110B;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: 4px;
+        }
+        .report-meta p {
+            font-size: 11px;
+            color: #57534E;
         }
         .summary {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
-            margin-bottom: 30px;
+            gap: 12px;
+            margin-bottom: 26px;
         }
         .summary-card {
-            border: 1px solid #ddd;
-            padding: 15px;
-            border-radius: 5px;
-            background: #f9f9f9;
+            border: 1px solid #EFE4D6;
+            border-left: 4px solid #C67A34;
+            background: #FAF5EE;
+            padding: 14px;
+            border-radius: 10px;
         }
         .summary-card h3 {
-            font-size: 11px;
-            color: #666;
-            margin-bottom: 8px;
+            font-size: 10px;
+            color: #6B4423;
             text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
         }
         .summary-card p {
-            font-size: 18px;
-            font-weight: bold;
-            color: #333;
+            font-size: 17px;
+            font-weight: 700;
+            color: #1A110B;
+            font-variant-numeric: tabular-nums;
         }
         .section {
-            margin-bottom: 30px;
+            margin-bottom: 26px;
+            break-inside: avoid;
         }
         .section h3 {
-            font-size: 14px;
-            color: #333;
-            margin-bottom: 15px;
-            padding-bottom: 5px;
-            border-bottom: 1px solid #333;
+            font-size: 13px;
+            color: #3B2314;
+            margin-bottom: 10px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #E8B86D;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
         }
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-bottom: 20px;
         }
         table th {
-            background: #333;
-            color: white;
-            padding: 10px;
+            background: #3B2314;
+            color: #FAF5EE;
+            padding: 9px 10px;
             text-align: left;
-            font-size: 11px;
+            font-size: 10px;
             text-transform: uppercase;
+            letter-spacing: 0.4px;
         }
         table td {
             padding: 8px 10px;
-            border-bottom: 1px solid #ddd;
+            border-bottom: 1px solid #EFE4D6;
+            font-variant-numeric: tabular-nums;
         }
         table tbody tr:nth-child(even) {
-            background: #f9f9f9;
+            background: #FCF9F5;
         }
-        table tfoot {
-            background: #f0f0f0;
-            font-weight: bold;
+        table tfoot td {
+            background: #FAF5EE;
+            font-weight: 700;
+            border-top: 2px solid #3B2314;
+        }
+        .text-right {
+            text-align: right;
+        }
+        .highlight {
+            background: #FEF3C7 !important;
+        }
+        .empty-row {
+            text-align: center;
+            color: #78716C;
+            padding: 18px !important;
         }
         .footer {
-            margin-top: 50px;
-            padding-top: 20px;
-            border-top: 1px solid #ddd;
-            text-align: center;
-            color: #666;
-            font-size: 11px;
+            margin-top: 30px;
+            padding-top: 14px;
+            border-top: 1px dashed #D6C7B5;
+            display: flex;
+            justify-content: space-between;
+            color: #78716C;
+            font-size: 10px;
         }
         @media print {
             body {
+                background: #FFFFFF;
                 padding: 0;
             }
+            .sheet {
+                box-shadow: none;
+                border: none;
+                padding: 0;
+                max-width: 100%;
+            }
             .no-print {
-                display: none;
+                display: none !important;
             }
             @page {
-                margin: 1cm;
+                margin: 1.2cm;
             }
-        }
-        .print-btn {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 14px;
-        }
-        .print-btn:hover {
-            background: #45a049;
-        }
-        .highlight {
-            background: #fff3cd !important;
         }
     </style>
 </head>
 <body>
-    <button onclick="window.print()" class="print-btn no-print">🖨️ Print Laporan</button>
-
-    <div class="header">
-        <h1>☕ KOPI PASTE</h1>
-        <h2>Laporan Penjualan</h2>
-        <p>Periode: {{ $startDate->format('d F Y') }} s/d {{ $endDate->format('d F Y') }}</p>
-        <p style="font-size: 11px; margin-top: 5px;">Dicetak: {{ now()->format('d F Y H:i') }}</p>
+    <div class="toolbar no-print">
+        <button type="button" onclick="window.close()" class="btn btn-close">Tutup</button>
+        <button type="button" onclick="window.print()" class="btn btn-print">Cetak Laporan</button>
     </div>
 
-    <div class="summary">
-        <div class="summary-card">
-            <h3>Total Transaksi</h3>
-            <p>{{ number_format($totalTransaksi) }}</p>
+    <div class="sheet">
+        <div class="header">
+            <div class="brand">
+                <h1>KOPI PASTE</h1>
+                <p>Jl. Kopi No. 123, Medan, Sumatera Utara</p>
+                <p>Telp: 0812-3456-7890 &bull; Email: info@kopipaste.com</p>
+            </div>
+            <div class="report-meta">
+                <h2>Laporan Penjualan</h2>
+                <p>Periode: <strong>{{ $startDate->format('d F Y') }}</strong> s/d <strong>{{ $endDate->format('d F Y') }}</strong></p>
+                <p>Dicetak: {{ now()->format('d F Y H:i') }} WIB</p>
+            </div>
         </div>
-        <div class="summary-card">
-            <h3>Total Pendapatan</h3>
-            <p>Rp {{ number_format($totalPendapatan) }}</p>
+
+        <div class="summary">
+            <div class="summary-card">
+                <h3>Total Transaksi</h3>
+                <p>{{ number_format($totalTransaksi, 0, ',', '.') }}</p>
+            </div>
+            <div class="summary-card">
+                <h3>Total Pendapatan</h3>
+                <p>Rp {{ number_format($totalPendapatan, 0, ',', '.') }}</p>
+            </div>
+            <div class="summary-card">
+                <h3>Total Pesanan</h3>
+                <p>{{ number_format($totalPesanan, 0, ',', '.') }}</p>
+            </div>
+            <div class="summary-card">
+                <h3>Rata-rata / Transaksi</h3>
+                <p>Rp {{ number_format($rataRataTransaksi, 0, ',', '.') }}</p>
+            </div>
         </div>
-        <div class="summary-card">
-            <h3>Total Pesanan</h3>
-            <p>{{ number_format($totalPesanan) }}</p>
+
+        <div class="section">
+            <h3>Penjualan per Kategori</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Kategori</th>
+                        <th class="text-right">Total Qty</th>
+                        <th class="text-right">Total Pendapatan</th>
+                        <th class="text-right">Persentase</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @forelse($salesByCategory as $category)
+                    <tr>
+                        <td><strong>{{ $category->kategori }}</strong></td>
+                        <td class="text-right">{{ number_format($category->total_qty, 0, ',', '.') }}</td>
+                        <td class="text-right">Rp {{ number_format($category->total_pendapatan, 0, ',', '.') }}</td>
+                        <td class="text-right">{{ $totalPendapatan > 0 ? number_format($category->total_pendapatan / $totalPendapatan * 100, 1) : 0 }}%</td>
+                    </tr>
+                    @empty
+                    <tr>
+                        <td colspan="4" class="empty-row">Belum ada data penjualan kategori pada periode ini.</td>
+                    </tr>
+                    @endforelse
+                </tbody>
+            </table>
         </div>
-        <div class="summary-card">
-            <h3>Rata-rata/Transaksi</h3>
-            <p>Rp {{ number_format($rataRataTransaksi) }}</p>
+
+        <div class="section">
+            <h3>Top 10 Menu Terlaris</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Nama Menu</th>
+                        <th>Kategori</th>
+                        <th class="text-right">Harga</th>
+                        <th class="text-right">Terjual</th>
+                        <th class="text-right">Total Pendapatan</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @forelse($topMenus as $index => $menu)
+                    <tr class="{{ $index < 3 ? 'highlight' : '' }}">
+                        <td><strong>#{{ $index + 1 }}</strong></td>
+                        <td>{{ $menu->nama }}</td>
+                        <td>{{ $menu->kategori }}</td>
+                        <td class="text-right">Rp {{ number_format($menu->harga, 0, ',', '.') }}</td>
+                        <td class="text-right"><strong>{{ number_format($menu->total_qty, 0, ',', '.') }}</strong></td>
+                        <td class="text-right"><strong>Rp {{ number_format($menu->total_pendapatan, 0, ',', '.') }}</strong></td>
+                    </tr>
+                    @empty
+                    <tr>
+                        <td colspan="6" class="empty-row">Belum ada data menu terjual pada periode ini.</td>
+                    </tr>
+                    @endforelse
+                </tbody>
+            </table>
         </div>
-    </div>
 
-    <div class="section">
-        <h3>📊 Penjualan per Kategori</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>Kategori</th>
-                    <th>Total Qty</th>
-                    <th>Total Pendapatan</th>
-                    <th>Persentase</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($salesByCategory as $category)
-                <tr>
-                    <td><strong>{{ $category->kategori }}</strong></td>
-                    <td>{{ number_format($category->total_qty) }}</td>
-                    <td>Rp {{ number_format($category->total_pendapatan) }}</td>
-                    <td>{{ $totalPendapatan > 0 ? number_format($category->total_pendapatan / $totalPendapatan * 100, 1) : 0 }}%</td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
+        <div class="section">
+            <h3>Metode Pembayaran</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Metode</th>
+                        <th class="text-right">Total Transaksi</th>
+                        <th class="text-right">Total Pendapatan</th>
+                        <th class="text-right">Persentase</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @forelse($paymentMethods as $method)
+                    <tr>
+                        <td><strong>{{ $method->metode_pembayaran }}</strong></td>
+                        <td class="text-right">{{ number_format($method->total_transaksi, 0, ',', '.') }}</td>
+                        <td class="text-right">Rp {{ number_format($method->total_pendapatan, 0, ',', '.') }}</td>
+                        <td class="text-right">{{ $totalPendapatan > 0 ? number_format($method->total_pendapatan / $totalPendapatan * 100, 1) : 0 }}%</td>
+                    </tr>
+                    @empty
+                    <tr>
+                        <td colspan="4" class="empty-row">Belum ada transaksi pada periode ini.</td>
+                    </tr>
+                    @endforelse
+                </tbody>
+            </table>
+        </div>
 
-    <div class="section">
-        <h3>⭐ Top 10 Menu Terlaris</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>Rank</th>
-                    <th>Nama Menu</th>
-                    <th>Kategori</th>
-                    <th>Harga</th>
-                    <th>Total Terjual</th>
-                    <th>Total Pendapatan</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($topMenus as $index => $menu)
-                <tr class="{{ $index < 3 ? 'highlight' : '' }}">
-                    <td><strong>{{ $index + 1 }}</strong></td>
-                    <td>{{ $menu->nama }}</td>
-                    <td>{{ $menu->kategori }}</td>
-                    <td>Rp {{ number_format($menu->harga) }}</td>
-                    <td><strong>{{ number_format($menu->total_qty) }}</strong></td>
-                    <td><strong>Rp {{ number_format($menu->total_pendapatan) }}</strong></td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
+        <div class="section">
+            <h3>Penjualan Harian</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tanggal</th>
+                        <th class="text-right">Total Transaksi</th>
+                        <th class="text-right">Total Pendapatan</th>
+                        <th class="text-right">Rata-rata</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @forelse($dailySales as $sale)
+                    <tr>
+                        <td>{{ \Carbon\Carbon::parse($sale->date)->format('d M Y') }}</td>
+                        <td class="text-right">{{ number_format($sale->total_transaksi, 0, ',', '.') }}</td>
+                        <td class="text-right">Rp {{ number_format($sale->total_pendapatan, 0, ',', '.') }}</td>
+                        <td class="text-right">Rp {{ number_format($sale->total_transaksi > 0 ? $sale->total_pendapatan / $sale->total_transaksi : 0, 0, ',', '.') }}</td>
+                    </tr>
+                    @empty
+                    <tr>
+                        <td colspan="4" class="empty-row">Belum ada penjualan harian pada periode ini.</td>
+                    </tr>
+                    @endforelse
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td>TOTAL</td>
+                        <td class="text-right">{{ number_format($totalTransaksi, 0, ',', '.') }}</td>
+                        <td class="text-right">Rp {{ number_format($totalPendapatan, 0, ',', '.') }}</td>
+                        <td class="text-right">Rp {{ number_format($rataRataTransaksi, 0, ',', '.') }}</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
 
-    <div class="section">
-        <h3>💳 Metode Pembayaran</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>Metode</th>
-                    <th>Total Transaksi</th>
-                    <th>Total Pendapatan</th>
-                    <th>Persentase</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($paymentMethods as $method)
-                <tr>
-                    <td><strong>{{ ucfirst($method->metode_pembayaran) }}</strong></td>
-                    <td>{{ number_format($method->total_transaksi) }}</td>
-                    <td>Rp {{ number_format($method->total_pendapatan) }}</td>
-                    <td>{{ $totalPendapatan > 0 ? number_format($method->total_pendapatan / $totalPendapatan * 100, 1) : 0 }}%</td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
-
-    <div class="section">
-        <h3>📅 Penjualan Harian</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>Tanggal</th>
-                    <th>Total Transaksi</th>
-                    <th>Total Pendapatan</th>
-                    <th>Rata-rata</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($dailySales as $sale)
-                <tr>
-                    <td>{{ \Carbon\Carbon::parse($sale->date)->format('d M Y') }}</td>
-                    <td>{{ number_format($sale->total_transaksi) }}</td>
-                    <td>Rp {{ number_format($sale->total_pendapatan) }}</td>
-                    <td>Rp {{ number_format($sale->total_transaksi > 0 ? $sale->total_pendapatan / $sale->total_transaksi : 0) }}</td>
-                </tr>
-                @endforeach
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td>TOTAL</td>
-                    <td>{{ number_format($totalTransaksi) }}</td>
-                    <td>Rp {{ number_format($totalPendapatan) }}</td>
-                    <td>Rp {{ number_format($rataRataTransaksi) }}</td>
-                </tr>
-            </tfoot>
-        </table>
-    </div>
-
-    <div class="footer">
-        <p>Dokumen ini dicetak secara otomatis dari sistem Kopi Paste</p>
-        <p>© {{ date('Y') }} Kopi Paste - All Rights Reserved</p>
+        <div class="footer">
+            <span>Dokumen ini dicetak secara otomatis dari sistem Kopi Paste</span>
+            <span>&copy; {{ date('Y') }} Kopi Paste &bull; Medan</span>
+        </div>
     </div>
 </body>
 </html>
