@@ -10,7 +10,7 @@
     @endphp
 
     <!-- Top Filter Toolbar -->
-    <div class="bg-white border border-latte rounded-2xl p-4 sm:p-5 shadow-xs mb-6">
+    <div class="bg-white border border-latte rounded-2xl p-4 sm:p-5 shadow-sm mb-6">
         <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
             <form action="{{ route('cashier.order.index') }}" method="GET" class="flex flex-wrap items-center gap-2.5 flex-1">
                 <div class="relative flex-1 min-w-[200px] sm:max-w-xs">
@@ -107,7 +107,7 @@
     <!-- Orders List -->
     <div class="space-y-4">
         @forelse($orders as $order)
-        <div class="bg-white border border-latte rounded-2xl p-5 shadow-xs hover:shadow-md transition border-l-4 {{ $order->status === 'menunggu' ? 'border-l-amber-500' : ($order->status === 'diproses' ? 'border-l-sky-500' : 'border-l-emerald-500') }}">
+        <div class="bg-white border border-latte rounded-2xl p-5 shadow-sm hover:shadow-md transition border-l-4 {{ $order->status === 'menunggu' ? 'border-l-amber-500' : ($order->status === 'diproses' ? 'border-l-sky-500' : 'border-l-emerald-500') }}">
             <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div class="flex-1 min-w-0">
                     <div class="flex flex-wrap items-center gap-2.5 mb-2">
@@ -214,7 +214,7 @@
 
     <!-- Payment Modal -->
     <div id="paymentModal"
-         class="hidden fixed inset-0 bg-espresso/70 backdrop-blur-xs z-50 flex items-center justify-center p-4"
+         class="hidden fixed inset-0 bg-espresso/70 backdrop-blur-sm z-50 flex items-center justify-center p-4"
          role="dialog"
          aria-modal="true">
         <div class="bg-white border border-latte rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl" onclick="event.stopPropagation()">
@@ -313,7 +313,7 @@
 
     <!-- Delete Confirmation Modal -->
     <div id="deleteOrderModal"
-         class="hidden fixed inset-0 bg-espresso/70 backdrop-blur-xs z-50 flex items-center justify-center p-4"
+         class="hidden fixed inset-0 bg-espresso/70 backdrop-blur-sm z-50 flex items-center justify-center p-4"
          role="dialog"
          aria-modal="true">
         <div class="bg-white border border-latte rounded-3xl max-w-sm w-full p-6 shadow-2xl" onclick="event.stopPropagation()">

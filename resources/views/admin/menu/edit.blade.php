@@ -10,7 +10,7 @@
         <span>Kembali ke Daftar Menu</span>
     </a>
 
-    <div class="bg-white border border-latte rounded-3xl p-6 sm:p-8 shadow-xs">
+    <div class="bg-white border border-latte rounded-3xl p-6 sm:p-8 shadow-sm">
         <div class="pb-5 mb-6 border-b border-latte">
             <h2 class="font-serif text-2xl font-bold text-espresso">Perbarui Menu: {{ $menu->nama }}</h2>
             <p class="text-sm text-stone-500 mt-0.5">Ubah nama, kategori, harga, status ketersediaan, atau foto menu.</p>

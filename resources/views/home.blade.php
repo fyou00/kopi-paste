@@ -83,13 +83,13 @@
                     </p>
 
                     <div class="flex flex-wrap gap-2.5 mb-8">
-                        <span class="inline-flex items-center gap-2 px-3.5 py-2 rounded-full bg-white border border-latte text-sm font-medium text-espresso shadow-xs">
+                        <span class="inline-flex items-center gap-2 px-3.5 py-2 rounded-full bg-white border border-latte text-sm font-medium text-espresso shadow-sm">
                             <i class="fas fa-fire text-caramel"></i> Roasting Segar
                         </span>
-                        <span class="inline-flex items-center gap-2 px-3.5 py-2 rounded-full bg-white border border-latte text-sm font-medium text-espresso shadow-xs">
+                        <span class="inline-flex items-center gap-2 px-3.5 py-2 rounded-full bg-white border border-latte text-sm font-medium text-espresso shadow-sm">
                             <i class="fas fa-user-check text-caramel"></i> Barista Berpengalaman
                         </span>
-                        <span class="inline-flex items-center gap-2 px-3.5 py-2 rounded-full bg-white border border-latte text-sm font-medium text-espresso shadow-xs">
+                        <span class="inline-flex items-center gap-2 px-3.5 py-2 rounded-full bg-white border border-latte text-sm font-medium text-espresso shadow-sm">
                             <i class="fas fa-wifi text-caramel"></i> Ruang Nyaman &amp; Wi-Fi
                         </span>
                     </div>
@@ -150,7 +150,7 @@
                                         <i class="fas fa-mug-hot text-4xl opacity-60"></i>
                                     </div>
                                 @endif
-                                <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-espresso/85 text-gold text-xs font-semibold backdrop-blur-xs">
+                                <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-espresso/85 text-gold text-xs font-semibold backdrop-blur-sm">
                                     {{ $menu->kategori }}
                                 </span>
                             </div>

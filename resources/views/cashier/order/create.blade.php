@@ -11,7 +11,7 @@
         <!-- Left: POS Menu Selection -->
         <div class="lg:col-span-8 space-y-5">
             <!-- Sticky Search & Category Pills -->
-            <div class="bg-white border border-latte rounded-2xl p-4 shadow-xs sticky top-0 z-20">
+            <div class="bg-white border border-latte rounded-2xl p-4 shadow-sm sticky top-0 z-20">
                 <div class="relative mb-3.5">
                     <i class="fas fa-search absolute left-3.5 top-1/2 -translate-y-1/2 text-stone-400 text-sm"></i>
                     <input type="text"
@@ -46,7 +46,7 @@
             <!-- Menu Categories -->
             <div id="posMenuContainer" class="space-y-6">
                 @forelse($menusByCategory as $kategori => $menus)
-                <div class="bg-white border border-latte rounded-2xl p-5 shadow-xs"
+                <div class="bg-white border border-latte rounded-2xl p-5 shadow-sm"
                      data-category-section="{{ Str::slug($kategori) }}">
                     <div class="flex items-center justify-between mb-4 pb-2.5 border-b border-latte/70">
                         <div class="flex items-center gap-2.5">

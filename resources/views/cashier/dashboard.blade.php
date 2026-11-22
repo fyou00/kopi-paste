@@ -11,7 +11,7 @@
 
     <!-- Statistics Cards -->
     <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 mb-6">
-        <div class="bg-white border border-latte rounded-2xl p-5 shadow-xs flex items-center justify-between gap-4">
+        <div class="bg-white border border-latte rounded-2xl p-5 shadow-sm flex items-center justify-between gap-4">
             <div>
                 <p class="text-xs font-semibold uppercase tracking-wider text-stone-500">Pesanan Menunggu</p>
                 <p class="font-mono-num text-3xl font-bold text-amber-600 mt-1">{{ $pesananMenunggu }}</p>
@@ -22,7 +22,7 @@
             </div>
         </div>
 
-        <div class="bg-white border border-latte rounded-2xl p-5 shadow-xs flex items-center justify-between gap-4">
+        <div class="bg-white border border-latte rounded-2xl p-5 shadow-sm flex items-center justify-between gap-4">
             <div>
                 <p class="text-xs font-semibold uppercase tracking-wider text-stone-500">Pesanan Diproses</p>
                 <p class="font-mono-num text-3xl font-bold text-sky-600 mt-1">{{ $pesananDiproses }}</p>
@@ -33,7 +33,7 @@
             </div>
         </div>
 
-        <div class="bg-white border border-latte rounded-2xl p-5 shadow-xs flex items-center justify-between gap-4">
+        <div class="bg-white border border-latte rounded-2xl p-5 shadow-sm flex items-center justify-between gap-4">
             <div>
                 <p class="text-xs font-semibold uppercase tracking-wider text-stone-500">Transaksi Hari Ini</p>
                 <p class="font-mono-num text-3xl font-bold text-emerald-600 mt-1">{{ $transaksiHariIni }}</p>
@@ -44,7 +44,7 @@
             </div>
         </div>
 
-        <div class="bg-white border border-latte rounded-2xl p-5 shadow-xs flex items-center justify-between gap-4">
+        <div class="bg-white border border-latte rounded-2xl p-5 shadow-sm flex items-center justify-between gap-4">
             <div class="min-w-0">
                 <p class="text-xs font-semibold uppercase tracking-wider text-stone-500">Pendapatan Hari Ini</p>
                 <p class="font-mono-num text-2xl font-bold text-caramel mt-1 truncate">
@@ -59,7 +59,7 @@
     </div>
 
     <!-- Quick Actions Bar -->
-    <div class="bg-white border border-latte rounded-2xl p-5 shadow-xs mb-6">
+    <div class="bg-white border border-latte rounded-2xl p-5 shadow-sm mb-6">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
             <div>
                 <h2 class="font-serif text-lg font-bold text-espresso">Aksi Cepat Kasir</h2>
@@ -105,7 +105,7 @@
     <!-- Main Operational Grid -->
     <div class="grid lg:grid-cols-3 gap-6">
         <!-- Active Orders Column -->
-        <div class="lg:col-span-2 bg-white border border-latte rounded-2xl shadow-xs flex flex-col overflow-hidden">
+        <div class="lg:col-span-2 bg-white border border-latte rounded-2xl shadow-sm flex flex-col overflow-hidden">
             <div class="px-6 py-4 border-b border-latte flex flex-wrap items-center justify-between gap-3">
                 <div class="flex items-center gap-3">
                     <h3 class="font-serif text-xl font-bold text-espresso">Pesanan Aktif</h3>
@@ -204,7 +204,7 @@
         <!-- Right Insights Column -->
         <div class="space-y-6">
             <!-- Table Status Card -->
-            <div class="bg-white border border-latte rounded-2xl p-6 shadow-xs">
+            <div class="bg-white border border-latte rounded-2xl p-6 shadow-sm">
                 <div class="flex items-center justify-between mb-4">
                     <h3 class="font-serif text-lg font-bold text-espresso">Status Meja</h3>
                     <span class="px-2.5 py-1 rounded-full bg-cream border border-latte text-xs font-bold font-mono-num text-brown">
@@ -230,7 +230,7 @@
             </div>
 
             <!-- Popular Menus Today -->
-            <div class="bg-white border border-latte rounded-2xl shadow-xs overflow-hidden">
+            <div class="bg-white border border-latte rounded-2xl shadow-sm overflow-hidden">
                 <div class="px-6 py-4 border-b border-latte">
                     <h3 class="font-serif text-lg font-bold text-espresso">Menu Populer Hari Ini</h3>
                 </div>

@@ -21,7 +21,7 @@
     </div>
 
     <!-- Main Detail Card -->
-    <div class="bg-white border border-latte rounded-3xl p-6 sm:p-8 shadow-xs">
+    <div class="bg-white border border-latte rounded-3xl p-6 sm:p-8 shadow-sm">
         <!-- Header & Status Badge -->
         <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4 pb-6 border-b border-latte">
             <div>
@@ -179,7 +179,7 @@
 
 <!-- Payment Modal -->
 <div id="paymentModal"
-     class="hidden fixed inset-0 bg-espresso/70 backdrop-blur-xs z-50 flex items-center justify-center p-4"
+     class="hidden fixed inset-0 bg-espresso/70 backdrop-blur-sm z-50 flex items-center justify-center p-4"
      role="dialog"
      aria-modal="true">
     <div class="bg-white border border-latte rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl" onclick="event.stopPropagation()">

@@ -25,7 +25,7 @@
     <!-- Brand Story Section -->
     <section class="py-16 lg:py-20 bg-cream">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="bg-white border border-latte rounded-3xl p-8 sm:p-12 shadow-xs mb-10">
+            <div class="bg-white border border-latte rounded-3xl p-8 sm:p-12 shadow-sm mb-10">
                 <div class="grid md:grid-cols-12 gap-10 items-center">
                     <div class="md:col-span-7">
                         <span class="inline-block text-xs font-bold uppercase tracking-widest text-caramel mb-3">Cerita Kami</span>
@@ -70,7 +70,7 @@
 
             <!-- Vision & Mission -->
             <div class="grid md:grid-cols-2 gap-8 mb-14">
-                <div class="bg-white border border-latte rounded-3xl p-8 shadow-xs hover:shadow-md transition">
+                <div class="bg-white border border-latte rounded-3xl p-8 shadow-sm hover:shadow-md transition">
                     <div class="w-12 h-12 rounded-2xl bg-espresso text-gold flex items-center justify-center mb-5">
                         <i class="fas fa-eye text-xl"></i>
                     </div>
@@ -80,7 +80,7 @@
                     </p>
                 </div>
 
-                <div class="bg-white border border-latte rounded-3xl p-8 shadow-xs hover:shadow-md transition">
+                <div class="bg-white border border-latte rounded-3xl p-8 shadow-sm hover:shadow-md transition">
                     <div class="w-12 h-12 rounded-2xl bg-caramel/15 border border-caramel/30 text-caramel flex items-center justify-center mb-5">
                         <i class="fas fa-bullseye text-xl"></i>
                     </div>
@@ -92,7 +92,7 @@
             </div>
 
             <!-- Contact & Location Section -->
-            <div id="contact" class="scroll-mt-24 bg-white border border-latte rounded-3xl p-8 sm:p-10 shadow-xs">
+            <div id="contact" class="scroll-mt-24 bg-white border border-latte rounded-3xl p-8 sm:p-10 shadow-sm">
                 <div class="grid lg:grid-cols-12 gap-10 items-stretch">
                     <div class="lg:col-span-7">
                         <span class="inline-block text-xs font-bold uppercase tracking-widest text-caramel mb-2">Kontak &amp; Lokasi</span>

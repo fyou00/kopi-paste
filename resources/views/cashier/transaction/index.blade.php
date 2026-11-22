@@ -5,7 +5,7 @@
 
 @section('content')
     <!-- Filter Card -->
-    <div class="bg-white border border-latte rounded-2xl p-5 shadow-xs mb-6">
+    <div class="bg-white border border-latte rounded-2xl p-5 shadow-sm mb-6">
         <form action="{{ route('cashier.transaction.index') }}" method="GET" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-3.5 items-end">
             <div class="lg:col-span-2">
                 <label class="block text-xs font-bold uppercase tracking-wider text-stone-500 mb-1.5">Dari Tanggal</label>
@@ -60,25 +60,25 @@
 
     <!-- Summary KPI Cards -->
     <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 mb-6">
-        <div class="bg-white border border-latte rounded-2xl p-5 shadow-xs">
+        <div class="bg-white border border-latte rounded-2xl p-5 shadow-sm">
             <p class="text-xs font-semibold uppercase tracking-wider text-stone-500 mb-1">Total Transaksi</p>
             <p class="font-mono-num text-3xl font-bold text-espresso">{{ $totalTransaksi }}</p>
             <p class="text-xs text-stone-400 mt-1">Sesuai filter aktif</p>
         </div>
 
-        <div class="bg-white border border-latte rounded-2xl p-5 shadow-xs">
+        <div class="bg-white border border-latte rounded-2xl p-5 shadow-sm">
             <p class="text-xs font-semibold uppercase tracking-wider text-stone-500 mb-1">Total Pendapatan</p>
             <p class="font-mono-num text-2xl font-bold text-emerald-600">Rp {{ number_format($totalPendapatan, 0, ',', '.') }}</p>
             <p class="text-xs text-stone-400 mt-1">Akumulasi hasil filter</p>
         </div>
 
-        <div class="bg-white border border-latte rounded-2xl p-5 shadow-xs">
+        <div class="bg-white border border-latte rounded-2xl p-5 shadow-sm">
             <p class="text-xs font-semibold uppercase tracking-wider text-stone-500 mb-1">Hari Ini</p>
             <p class="font-mono-num text-2xl font-bold text-caramel">Rp {{ number_format($totalHariIni, 0, ',', '.') }}</p>
             <p class="text-xs text-stone-400 mt-1">Pendapatan harian</p>
         </div>
 
-        <div class="bg-white border border-latte rounded-2xl p-5 shadow-xs">
+        <div class="bg-white border border-latte rounded-2xl p-5 shadow-sm">
             <p class="text-xs font-semibold uppercase tracking-wider text-stone-500 mb-1">Bulan Ini</p>
             <p class="font-mono-num text-2xl font-bold text-sky-600">Rp {{ number_format($totalBulanIni, 0, ',', '.') }}</p>
             <p class="text-xs text-stone-400 mt-1">Akumulasi bulanan</p>
@@ -87,22 +87,25 @@
 
     <!-- Today Payment Methods Breakdown -->
     @if($paymentMethodStats->count() > 0)
-    <div class="bg-white border border-latte rounded-2xl p-6 shadow-xs mb-6">
+    <div class="bg-white border border-latte rounded-2xl p-6 shadow-sm mb-6">
         <h3 class="font-serif text-lg font-bold text-espresso mb-4">Metode Pembayaran Hari Ini</h3>
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             @foreach($paymentMethodStats as $stat)
             @php
                 $method = $stat->metode_pembayaran;
-                $iconClass = $method === 'Tunai' ? 'fa-money-bill-wave text-emerald-600 bg-emerald-50' :
-                    ($method === 'Transfer' ? 'fa-university text-sky-600 bg-sky-50' :
-                    ($method === 'QRIS' ? 'fa-qrcode text-purple-600 bg-purple-50' : 'fa-credit-card text-amber-600 bg-amber-50'));
+                $mStyle = match($method) {
+                    'Tunai' => ['icon' => 'fa-money-bill-wave', 'box' => 'text-emerald-600 bg-emerald-50'],
+                    'Transfer' => ['icon' => 'fa-university', 'box' => 'text-sky-600 bg-sky-50'],
+                    'QRIS' => ['icon' => 'fa-qrcode', 'box' => 'text-purple-600 bg-purple-50'],
+                    default => ['icon' => 'fa-credit-card', 'box' => 'text-amber-600 bg-amber-50'],
+                };
                 $pct = $totalHariIni > 0 ? round(($stat->total / $totalHariIni) * 100) : 0;
             @endphp
             <div class="p-4 rounded-2xl bg-cream/60 border border-latte">
                 <div class="flex items-center justify-between mb-3">
                     <span class="text-xs font-bold text-espresso">{{ $method }}</span>
-                    <span class="w-8 h-8 rounded-lg flex items-center justify-center {{ $iconClass }}">
-                        <i class="fas {{ explode(' ', $iconClass)[0] }} text-sm"></i>
+                    <span class="w-8 h-8 rounded-lg flex items-center justify-center {{ $mStyle['box'] }}">
+                        <i class="fas {{ $mStyle['icon'] }} text-sm"></i>
                     </span>
                 </div>
                 <p class="font-mono-num text-2xl font-bold text-espresso">{{ $stat->count }} <span class="text-xs font-normal text-stone-500">transaksi</span></p>
@@ -117,7 +120,7 @@
     @endif
 
     <!-- Transactions Table -->
-    <div class="bg-white border border-latte rounded-2xl shadow-xs overflow-hidden">
+    <div class="bg-white border border-latte rounded-2xl shadow-sm overflow-hidden">
         <div class="overflow-x-auto">
             <table class="w-full text-sm">
                 <thead class="bg-cream border-b border-latte text-stone-600 text-xs uppercase tracking-wider">

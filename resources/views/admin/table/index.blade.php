@@ -12,7 +12,7 @@
 
     <!-- Summary KPI Cards -->
     <div class="grid sm:grid-cols-3 gap-5 mb-6">
-        <div class="bg-white border border-latte rounded-2xl p-5 shadow-xs flex items-center justify-between">
+        <div class="bg-white border border-latte rounded-2xl p-5 shadow-sm flex items-center justify-between">
             <div>
                 <p class="text-xs font-semibold uppercase tracking-wider text-stone-500">Total Meja</p>
                 <p class="font-mono-num text-3xl font-bold text-espresso mt-1">{{ $totalTables }}</p>
@@ -23,7 +23,7 @@
             </span>
         </div>
 
-        <div class="bg-white border border-latte rounded-2xl p-5 shadow-xs flex items-center justify-between">
+        <div class="bg-white border border-latte rounded-2xl p-5 shadow-sm flex items-center justify-between">
             <div>
                 <p class="text-xs font-semibold uppercase tracking-wider text-stone-500">Meja Tersedia</p>
                 <p class="font-mono-num text-3xl font-bold text-emerald-600 mt-1">{{ $tableTersedia }}</p>
@@ -34,7 +34,7 @@
             </span>
         </div>
 
-        <div class="bg-white border border-latte rounded-2xl p-5 shadow-xs flex items-center justify-between">
+        <div class="bg-white border border-latte rounded-2xl p-5 shadow-sm flex items-center justify-between">
             <div>
                 <p class="text-xs font-semibold uppercase tracking-wider text-stone-500">Meja Terisi</p>
                 <p class="font-mono-num text-3xl font-bold text-caramel mt-1">{{ $tableTerisi }}</p>
@@ -47,7 +47,7 @@
     </div>
 
     <!-- Filter & Action Toolbar -->
-    <div class="bg-white border border-latte rounded-2xl p-4 sm:p-5 shadow-xs mb-6">
+    <div class="bg-white border border-latte rounded-2xl p-4 sm:p-5 shadow-sm mb-6">
         <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
             <div class="flex flex-wrap items-center gap-3">
                 <!-- Search by table number -->
@@ -105,7 +105,7 @@
             $badgeStyle = $table->status === 'tersedia' ? 'bg-emerald-100 text-emerald-800' : ($table->status === 'terisi' ? 'bg-amber-100 text-amber-800' : 'bg-sky-100 text-sky-800');
             $iconBg = $table->status === 'tersedia' ? 'bg-emerald-50 text-emerald-700 border-emerald-200' : ($table->status === 'terisi' ? 'bg-amber-50 text-caramel border-amber-200' : 'bg-sky-50 text-sky-700 border-sky-200');
         @endphp
-        <div class="bg-white border border-latte rounded-2xl overflow-hidden shadow-xs hover:shadow-md transition flex flex-col">
+        <div class="bg-white border border-latte rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition flex flex-col">
             <div class="h-1.5 {{ $topStrip }}"></div>
 
             <div class="p-5 flex-1 flex flex-col">
@@ -169,7 +169,7 @@
 
     <!-- Delete Table Confirmation Modal -->
     <div id="deleteTableModal"
-         class="hidden fixed inset-0 bg-espresso/70 backdrop-blur-xs z-50 flex items-center justify-center p-4"
+         class="hidden fixed inset-0 bg-espresso/70 backdrop-blur-sm z-50 flex items-center justify-center p-4"
          role="dialog"
          aria-modal="true">
         <div class="bg-white border border-latte rounded-3xl max-w-sm w-full p-6 shadow-2xl" onclick="event.stopPropagation()">

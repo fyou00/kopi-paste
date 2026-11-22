@@ -10,7 +10,7 @@
 
     <!-- Statistics KPI Cards -->
     <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 mb-6">
-        <div class="bg-white border border-latte rounded-2xl p-5 shadow-xs flex items-start justify-between gap-4">
+        <div class="bg-white border border-latte rounded-2xl p-5 shadow-sm flex items-start justify-between gap-4">
             <div>
                 <p class="text-xs font-semibold uppercase tracking-wider text-stone-500">Total Menu</p>
                 <p class="font-mono-num text-3xl font-bold text-espresso mt-1">{{ $totalMenus }}</p>
@@ -24,7 +24,7 @@
             </span>
         </div>
 
-        <div class="bg-white border border-latte rounded-2xl p-5 shadow-xs flex items-start justify-between gap-4">
+        <div class="bg-white border border-latte rounded-2xl p-5 shadow-sm flex items-start justify-between gap-4">
             <div>
                 <p class="text-xs font-semibold uppercase tracking-wider text-stone-500">Total Meja</p>
                 <p class="font-mono-num text-3xl font-bold text-espresso mt-1">{{ $totalTables }}</p>
@@ -38,7 +38,7 @@
             </span>
         </div>
 
-        <div class="bg-white border border-latte rounded-2xl p-5 shadow-xs flex items-start justify-between gap-4">
+        <div class="bg-white border border-latte rounded-2xl p-5 shadow-sm flex items-start justify-between gap-4">
             <div>
                 <p class="text-xs font-semibold uppercase tracking-wider text-stone-500">Pesanan Aktif</p>
                 <p class="font-mono-num text-3xl font-bold text-espresso mt-1">{{ $totalPesananAktif }}</p>
@@ -52,7 +52,7 @@
             </span>
         </div>
 
-        <div class="bg-white border border-latte rounded-2xl p-5 shadow-xs flex items-start justify-between gap-4">
+        <div class="bg-white border border-latte rounded-2xl p-5 shadow-sm flex items-start justify-between gap-4">
             <div class="min-w-0">
                 <p class="text-xs font-semibold uppercase tracking-wider text-stone-500">Transaksi Hari Ini</p>
                 <p class="font-mono-num text-3xl font-bold text-espresso mt-1">{{ $transaksiHariIni }}</p>
@@ -97,7 +97,7 @@
             </div>
         </div>
 
-        <div class="lg:col-span-5 bg-white border border-latte rounded-3xl p-6 shadow-xs flex flex-col justify-between">
+        <div class="lg:col-span-5 bg-white border border-latte rounded-3xl p-6 shadow-sm flex flex-col justify-between">
             <div>
                 <h3 class="font-serif text-lg font-bold text-espresso mb-1">Aksi Cepat Admin</h3>
                 <p class="text-xs text-stone-500 mb-4">Pintasan kelola inventaris dan laporan kedai</p>
@@ -143,7 +143,7 @@
     <!-- Bottom 2-Column Insights -->
     <div class="grid lg:grid-cols-2 gap-6">
         <!-- Recent Orders -->
-        <div class="bg-white border border-latte rounded-2xl shadow-xs overflow-hidden">
+        <div class="bg-white border border-latte rounded-2xl shadow-sm overflow-hidden">
             <div class="px-6 py-4 border-b border-latte flex items-center justify-between">
                 <h3 class="font-serif text-xl font-bold text-espresso">Pesanan Terbaru</h3>
                 <span class="px-2.5 py-1 rounded-full bg-cream border border-latte text-xs font-semibold text-brown font-mono-num">
@@ -187,7 +187,7 @@
         </div>
 
         <!-- Top Selling Menus -->
-        <div class="bg-white border border-latte rounded-2xl shadow-xs overflow-hidden">
+        <div class="bg-white border border-latte rounded-2xl shadow-sm overflow-hidden">
             <div class="px-6 py-4 border-b border-latte flex items-center justify-between">
                 <h3 class="font-serif text-xl font-bold text-espresso">Menu Terlaris Bulan Ini</h3>
                 <a href="{{ route('admin.report.index') }}" class="text-xs font-bold text-caramel hover:underline">

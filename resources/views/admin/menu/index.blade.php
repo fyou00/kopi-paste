@@ -5,7 +5,7 @@
 
 @section('content')
     <!-- Filter & Action Toolbar -->
-    <div class="bg-white border border-latte rounded-2xl p-4 sm:p-5 shadow-xs mb-6">
+    <div class="bg-white border border-latte rounded-2xl p-4 sm:p-5 shadow-sm mb-6">
         <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
             <form action="{{ route('admin.menu.index') }}" method="GET" class="flex flex-wrap items-center gap-2.5 flex-1">
                 <div class="relative flex-1 min-w-[200px] sm:max-w-xs">
@@ -57,7 +57,7 @@
     </div>
 
     <!-- Menu Table -->
-    <div class="bg-white border border-latte rounded-2xl shadow-xs overflow-hidden">
+    <div class="bg-white border border-latte rounded-2xl shadow-sm overflow-hidden">
         <div class="overflow-x-auto">
             <table class="w-full text-sm">
                 <thead class="bg-cream border-b border-latte text-stone-600 text-xs uppercase tracking-wider">
@@ -146,7 +146,7 @@
 
     <!-- Delete Menu Confirmation Modal -->
     <div id="deleteMenuModal"
-         class="hidden fixed inset-0 bg-espresso/70 backdrop-blur-xs z-50 flex items-center justify-center p-4"
+         class="hidden fixed inset-0 bg-espresso/70 backdrop-blur-sm z-50 flex items-center justify-center p-4"
          role="dialog"
          aria-modal="true">
         <div class="bg-white border border-latte rounded-3xl max-w-sm w-full p-6 shadow-2xl" onclick="event.stopPropagation()">

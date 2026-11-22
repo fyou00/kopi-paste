@@ -17,7 +17,7 @@
     <div class="flex h-screen overflow-hidden">
         <!-- Mobile Sidebar Overlay -->
         <div id="sidebarOverlay"
-             class="hidden fixed inset-0 bg-espresso/60 backdrop-blur-xs z-40 md:hidden no-print"
+             class="hidden fixed inset-0 bg-espresso/60 backdrop-blur-sm z-40 md:hidden no-print"
              onclick="toggleSidebar()"></div>
 
         <!-- Sidebar -->

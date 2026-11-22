@@ -58,14 +58,14 @@
 
     <!-- Sticky Filter & Category Bar -->
     @if($menusByCategory->count() > 0)
-    <div class="sticky top-[72px] z-30 bg-white/95 glass-nav border-b border-latte shadow-xs">
+    <div class="sticky top-[72px] z-30 bg-white/95 glass-nav border-b border-latte shadow-sm">
         <div class="max-w-7xl mx-auto px-6 py-3.5">
             <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3.5">
                 <!-- Category Pills -->
                 <div class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1 lg:pb-0" role="tablist" aria-label="Filter kategori menu">
                     <button type="button"
                             data-category-btn="all"
-                            class="category-pill shrink-0 px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition bg-espresso text-gold shadow-xs">
+                            class="category-pill shrink-0 px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition bg-espresso text-gold shadow-sm">
                         Semua Menu
                     </button>
                     @foreach($categories as $cat)
@@ -130,7 +130,7 @@
                             <div data-menu-card
                                  data-category="{{ Str::slug($kategori) }}"
                                  data-name="{{ strtolower($menu->nama) }}"
-                                 class="group bg-white border border-latte rounded-2xl overflow-hidden shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-full">
+                                 class="group bg-white border border-latte rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-full">
                                 <!-- Image Container -->
                                 <div class="relative h-52 overflow-hidden bg-latte/50 shrink-0">
                                     @if($menu->foto)
@@ -153,7 +153,7 @@
                                             <i class="fas fa-times-circle"></i> Habis
                                         </span>
                                     @else
-                                        <span class="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-emerald-600/90 text-white text-[11px] font-semibold shadow-xs inline-flex items-center gap-1">
+                                        <span class="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-emerald-600/90 text-white text-[11px] font-semibold shadow-sm inline-flex items-center gap-1">
                                             <span class="w-1.5 h-1.5 rounded-full bg-white"></span> Tersedia
                                         </span>
                                     @endif
@@ -293,7 +293,7 @@
 
     <!-- Order Info Modal -->
     <div id="orderInfoModal"
-         class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-espresso/70 backdrop-blur-xs"
+         class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-espresso/70 backdrop-blur-sm"
          role="dialog"
          aria-modal="true"
          aria-labelledby="modalMenuTitle">
@@ -415,7 +415,7 @@
                 btn.classList.toggle('bg-espresso', isSelected);
                 btn.classList.toggle('text-gold', isSelected);
                 btn.classList.toggle('font-semibold', isSelected);
-                btn.classList.toggle('shadow-xs', isSelected);
+                btn.classList.toggle('shadow-sm', isSelected);
 
                 btn.classList.toggle('bg-cream', !isSelected);
                 btn.classList.toggle('text-espresso', !isSelected);
