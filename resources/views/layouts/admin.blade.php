@@ -5,111 +5,162 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', 'Admin - Kopi Paste')</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    @include('partials.theme-head')
+    @stack('styles')
 </head>
-<body class="bg-gray-100">
+<body class="font-sans bg-cream text-espresso antialiased">
+    @php
+        $adminName = auth()->user()->name ?? 'Admin';
+        $adminInitials = strtoupper(substr($adminName, 0, 2));
+    @endphp
+
     <div class="flex h-screen overflow-hidden">
+        <!-- Mobile Sidebar Overlay -->
+        <div id="sidebarOverlay"
+             class="hidden fixed inset-0 bg-espresso/60 backdrop-blur-xs z-40 md:hidden no-print"
+             onclick="toggleSidebar()"></div>
+
         <!-- Sidebar -->
-        <aside class="w-64 bg-gray-800 text-white shrink-0 hidden md:block">
-            <div class="p-6">
-                <h2 class="text-2xl font-bold"><i class="fas fa-coffee"></i> Kopi Paste</h2>
-                <p class="text-sm text-gray-400">Admin Panel</p>
+        <aside id="adminSidebar"
+               class="fixed inset-y-0 left-0 z-50 w-64 bg-espresso text-white flex flex-col transform -translate-x-full md:translate-x-0 md:static transition-transform duration-200 ease-out shrink-0 border-r border-white/10 no-print">
+            <!-- Brand Block -->
+            <div class="px-5 py-5 border-b border-white/10 flex items-center justify-between">
+                <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-3">
+                    <span class="w-10 h-10 rounded-xl bg-gold/15 border border-gold/30 text-gold flex items-center justify-center shrink-0">
+                        <i class="fas fa-mug-hot text-lg"></i>
+                    </span>
+                    <div>
+                        <span class="font-script text-2xl text-gold block leading-none">Kopi Paste</span>
+                        <span class="inline-block mt-1 px-2 py-0.5 rounded-md bg-gold/20 text-gold text-[10px] font-bold uppercase tracking-wider">
+                            Admin Panel
+                        </span>
+                    </div>
+                </a>
+                <button type="button"
+                        onclick="toggleSidebar()"
+                        class="md:hidden text-white/70 hover:text-white p-1.5 rounded-lg"
+                        aria-label="Tutup menu navigasi">
+                    <i class="fas fa-times text-lg"></i>
+                </button>
             </div>
-            
-            <nav class="mt-6">
-                <a href="{{ route('admin.dashboard') }}" class="flex items-center px-6 py-3 text-gray-300 hover:bg-gray-700 hover:text-white transition {{ request()->routeIs('admin.dashboard') ? 'bg-gray-700 text-white' : '' }}">
-                    <i class="fas fa-dashboard w-6"></i>
+
+            <!-- Navigation -->
+            <nav class="flex-1 px-3 py-5 space-y-1.5 overflow-y-auto">
+                <p class="px-3 pb-1 text-[11px] font-bold uppercase tracking-wider text-white/40">Manajemen</p>
+
+                <a href="{{ route('admin.dashboard') }}"
+                   class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-medium transition {{ request()->routeIs('admin.dashboard') ? 'bg-gold/15 text-gold border border-gold/30 font-semibold' : 'text-white/75 hover:bg-white/5 hover:text-white' }}">
+                    <i class="fas fa-gauge-high w-5 text-center"></i>
                     <span>Dashboard</span>
                 </a>
-                <a href="{{ route('admin.menu.index') }}" class="flex items-center px-6 py-3 text-gray-300 hover:bg-gray-700 hover:text-white transition {{ request()->routeIs('admin.menu.*') ? 'bg-gray-700 text-white' : '' }}">
-                    <i class="fas fa-utensils w-6"></i>
+
+                <a href="{{ route('admin.menu.index') }}"
+                   class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-medium transition {{ request()->routeIs('admin.menu.*') ? 'bg-gold/15 text-gold border border-gold/30 font-semibold' : 'text-white/75 hover:bg-white/5 hover:text-white' }}">
+                    <i class="fas fa-mug-saucer w-5 text-center"></i>
                     <span>Kelola Menu</span>
                 </a>
-                <a href="{{ route('admin.table.index') }}" class="flex items-center px-6 py-3 text-gray-300 hover:bg-gray-700 hover:text-white transition {{ request()->routeIs('admin.table.*') ? 'bg-gray-700 text-white' : '' }}">
-                    <i class="fas fa-table w-6"></i>
+
+                <a href="{{ route('admin.table.index') }}"
+                   class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-medium transition {{ request()->routeIs('admin.table.*') ? 'bg-gold/15 text-gold border border-gold/30 font-semibold' : 'text-white/75 hover:bg-white/5 hover:text-white' }}">
+                    <i class="fas fa-chair w-5 text-center"></i>
                     <span>Kelola Meja</span>
                 </a>
-                <a href="{{ route('admin.report.index') }}" class="flex items-center px-6 py-3 text-gray-300 hover:bg-gray-700 hover:text-white transition {{ request()->routeIs('admin.report.*') ? 'bg-gray-700 text-white' : '' }}">
-                    <i class="fas fa-chart-line w-6"></i>
+
+                <a href="{{ route('admin.report.index') }}"
+                   class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-medium transition {{ request()->routeIs('admin.report.*') ? 'bg-gold/15 text-gold border border-gold/30 font-semibold' : 'text-white/75 hover:bg-white/5 hover:text-white' }}">
+                    <i class="fas fa-chart-line w-5 text-center"></i>
                     <span>Laporan Penjualan</span>
                 </a>
             </nav>
 
-            <div class="absolute bottom-0 w-64 p-6 border-t border-gray-700">
-                <div class="flex items-center mb-4">
-                    <div class="w-10 h-10 bg-amber-600 rounded-full flex items-center justify-center">
-                        <i class="fas fa-user"></i>
+            <!-- User Footer -->
+            <div class="mt-auto p-4 border-t border-white/10 bg-black/25">
+                <div class="flex items-center gap-3 mb-3.5">
+                    <div class="w-10 h-10 rounded-full bg-gold text-espresso font-bold text-sm flex items-center justify-center shrink-0">
+                        {{ $adminInitials }}
                     </div>
-                    <div class="ml-3">
-                        <p class="font-semibold">{{ auth()->user()->name }}</p>
-                        <p class="text-sm text-gray-400">Admin</p>
+                    <div class="min-w-0">
+                        <p class="font-semibold text-sm text-white truncate">{{ $adminName }}</p>
+                        <p class="text-xs text-gold/80">Administrator</p>
                     </div>
                 </div>
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-                    <button type="submit" class="w-full bg-red-600 hover:bg-red-700 text-white py-2 rounded transition">
-                        <i class="fas fa-sign-out-alt"></i> Logout
+                    <button type="submit"
+                            class="w-full py-2 px-3 rounded-xl bg-rose-600/90 hover:bg-rose-600 text-white text-xs font-semibold transition flex items-center justify-center gap-2">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Keluar</span>
                     </button>
                 </form>
             </div>
         </aside>
 
         <!-- Main Content -->
-        <div class="flex-1 flex flex-col overflow-hidden">
+        <div class="flex-1 flex flex-col min-w-0 overflow-hidden">
             <!-- Top Bar -->
-            <header class="bg-white shadow-sm">
-                <div class="px-6 py-4 flex justify-between items-center">
-                    <div class="flex items-center">
-                        <button class="md:hidden mr-4" onclick="toggleSidebar()">
-                            <i class="fas fa-bars text-xl"></i>
+            <header class="bg-white/95 glass-nav border-b border-latte shrink-0 no-print">
+                <div class="px-4 sm:px-6 h-16 flex justify-between items-center gap-4">
+                    <div class="flex items-center gap-3 min-w-0">
+                        <button type="button"
+                                onclick="toggleSidebar()"
+                                class="md:hidden w-10 h-10 rounded-xl border border-latte text-espresso hover:bg-cream flex items-center justify-center shrink-0 transition"
+                                aria-label="Buka menu navigasi">
+                            <i class="fas fa-bars"></i>
                         </button>
-                        <h1 class="text-2xl font-bold text-gray-800">@yield('page-title', 'Dashboard')</h1>
+                        <h1 class="font-serif text-xl sm:text-2xl font-bold text-espresso truncate">@yield('page-title', 'Dashboard')</h1>
                     </div>
-                    <a href="{{ route('home') }}" class="text-amber-600 hover:text-amber-700">
-                        <i class="fas fa-home"></i> Lihat Website
-                    </a>
+
+                    <div class="flex items-center gap-3 sm:gap-4 shrink-0">
+                        <span id="adminCurrentDate" class="hidden sm:inline-block text-xs font-medium text-stone-500"></span>
+                        <a href="{{ route('home') }}"
+                           class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-cream border border-latte hover:border-caramel text-brown hover:text-espresso text-xs font-bold transition">
+                            <i class="fas fa-globe text-caramel"></i>
+                            <span>Lihat Website</span>
+                        </a>
+                    </div>
                 </div>
             </header>
 
             <!-- Content Area -->
-            <main class="flex-1 overflow-y-auto p-6">
-                <!-- Alert Messages -->
-                @if(session('success'))
-                    <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4" role="alert">
-                        <i class="fas fa-check-circle"></i> {{ session('success') }}
-                    </div>
-                @endif
-
-                @if(session('error'))
-                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4" role="alert">
-                        <i class="fas fa-exclamation-circle"></i> {{ session('error') }}
-                    </div>
-                @endif
-
-                @if($errors->any())
-                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4" role="alert">
-                        <ul class="list-disc list-inside">
-                            @foreach($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
+            <main class="flex-1 overflow-y-auto p-4 sm:p-6">
+                @include('partials.flash-alerts')
 
                 @yield('content')
             </main>
         </div>
     </div>
 
-    <!-- Mobile Sidebar Overlay -->
-    <div id="sidebarOverlay" class="hidden fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden" onclick="toggleSidebar()"></div>
-    
     <script>
         function toggleSidebar() {
-            document.querySelector('aside').classList.toggle('hidden');
-            document.getElementById('sidebarOverlay').classList.toggle('hidden');
+            const sidebar = document.getElementById('adminSidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            if (!sidebar || !overlay) return;
+            sidebar.classList.toggle('-translate-x-full');
+            overlay.classList.toggle('hidden');
         }
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                const sidebar = document.getElementById('adminSidebar');
+                const overlay = document.getElementById('sidebarOverlay');
+                if (sidebar && !sidebar.classList.contains('-translate-x-full') && window.innerWidth < 768) {
+                    sidebar.classList.add('-translate-x-full');
+                    if (overlay) overlay.classList.add('hidden');
+                }
+            }
+        });
+
+        (function () {
+            const dateEl = document.getElementById('adminCurrentDate');
+            if (dateEl) {
+                dateEl.textContent = new Intl.DateTimeFormat('id-ID', {
+                    weekday: 'long',
+                    day: 'numeric',
+                    month: 'long',
+                    year: 'numeric'
+                }).format(new Date());
+            }
+        })();
     </script>
 
     @stack('scripts')
