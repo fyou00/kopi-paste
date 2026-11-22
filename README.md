@@ -129,3 +129,10 @@ Tersedia akun bawaan dari `UserSeeder` (di halaman `/login` juga tersedia tombol
 ## Tentang Proyek
 
 Proyek ini dikembangkan untuk memenuhi tugas mata kuliah **Workshop Web Lanjut** dengan fokus pada implementasi arsitektur **MVC (Model–View–Controller)** di Laravel 12, pengelolaan basis data relasional (menu, meja, pesanan, dan transaksi), serta pengalaman antarmuka yang responsif baik untuk pengunjung maupun staf operasional kedai.
+
+---
+
+## Lisensi
+
+Proyek ini dilisensikan di bawah [MIT License](LICENSE).
+
