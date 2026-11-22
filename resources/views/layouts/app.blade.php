@@ -16,7 +16,7 @@
     <!-- Navbar -->
     <nav id="navbar"
          data-home="{{ $isHome ? '1' : '0' }}"
-         class="fixed top-0 inset-x-0 z-50 transition-all duration-300 {{ $isHome ? 'bg-transparent' : 'bg-espresso/90 glass-nav border-b border-white/10 shadow-lg' }}">
+         class="fixed top-0 inset-x-0 z-50 transition-all duration-300 {{ $isHome ? 'bg-gradient-to-b from-espresso/75 to-transparent' : 'navbar-scrolled' }}">
         <div class="max-w-7xl mx-auto px-5 sm:px-6">
             <div class="flex justify-between items-center h-[72px]">
                 <!-- Brand Logo -->
@@ -270,16 +270,18 @@
 
             function updateNavbar() {
                 if (!navbar) return;
-                if (!isHome || window.scrollY > 40) {
-                    navbar.classList.remove('bg-transparent');
-                    navbar.classList.add('bg-espresso/95', 'glass-nav', 'shadow-lg', 'border-b', 'border-white/10');
+                const scrollTop = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || 0;
+                if (!isHome || scrollTop > 40) {
+                    navbar.classList.remove('bg-transparent', 'bg-gradient-to-b', 'from-espresso/75', 'to-transparent');
+                    navbar.classList.add('navbar-scrolled');
                 } else {
-                    navbar.classList.add('bg-transparent');
-                    navbar.classList.remove('bg-espresso/95', 'glass-nav', 'shadow-lg', 'border-b', 'border-white/10');
+                    navbar.classList.remove('navbar-scrolled');
+                    navbar.classList.add('bg-gradient-to-b', 'from-espresso/75', 'to-transparent');
                 }
             }
 
             window.addEventListener('scroll', updateNavbar, { passive: true });
+            document.addEventListener('scroll', updateNavbar, { passive: true });
             updateNavbar();
         })();
 

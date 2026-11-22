@@ -11,12 +11,12 @@
     $peakHour = $peakHourObj ? (int) $peakHourObj->hour : null;
 @endphp
 
-<div class="space-y-6">
+<div class="space-y-6 min-w-0">
     <!-- Filter & Export Card -->
     <div class="bg-white border border-latte rounded-2xl p-5 shadow-sm">
         <div class="flex flex-col xl:flex-row xl:items-end justify-between gap-5">
-            <form id="reportFilterForm" method="GET" action="{{ route('admin.report.index') }}" class="flex flex-wrap gap-3.5 items-end flex-1">
-                <div class="flex-1 min-w-[170px]">
+            <form id="reportFilterForm" method="GET" action="{{ route('admin.report.index') }}" class="flex flex-wrap gap-3.5 items-end flex-1 min-w-0">
+                <div class="w-full sm:w-auto sm:flex-1 sm:min-w-[160px]">
                     <label for="startDateInput" class="block text-xs font-bold uppercase tracking-wider text-stone-500 mb-1.5">Tanggal Mulai</label>
                     <input type="date"
                            id="startDateInput"
@@ -25,7 +25,7 @@
                            class="w-full px-3.5 py-2.5 rounded-xl border border-latte bg-cream/40 text-sm text-espresso focus:outline-none focus:ring-2 focus:ring-caramel">
                 </div>
 
-                <div class="flex-1 min-w-[170px]">
+                <div class="w-full sm:w-auto sm:flex-1 sm:min-w-[160px]">
                     <label for="endDateInput" class="block text-xs font-bold uppercase tracking-wider text-stone-500 mb-1.5">Tanggal Akhir</label>
                     <input type="date"
                            id="endDateInput"
@@ -79,48 +79,48 @@
 
     <!-- Summary KPI Cards -->
     <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5">
-        <div class="bg-white border border-latte rounded-2xl p-5 shadow-sm flex items-center justify-between gap-4">
-            <div>
+        <div class="bg-white border border-latte rounded-2xl p-5 shadow-sm">
+            <div class="flex items-center justify-between gap-2 mb-2">
                 <p class="text-xs font-semibold uppercase tracking-wider text-stone-500">Total Transaksi</p>
-                <p class="font-mono-num text-3xl font-bold text-espresso mt-1">{{ number_format($totalTransaksi, 0, ',', '.') }}</p>
+                <span class="w-9 h-9 rounded-xl bg-sky-50 border border-sky-200/70 text-sky-600 flex items-center justify-center shrink-0">
+                    <i class="fas fa-receipt text-base"></i>
+                </span>
             </div>
-            <span class="w-12 h-12 rounded-2xl bg-sky-50 border border-sky-200/70 text-sky-600 flex items-center justify-center shrink-0">
-                <i class="fas fa-receipt text-xl"></i>
-            </span>
+            <p class="font-mono-num text-2xl sm:text-3xl font-bold text-espresso">{{ number_format($totalTransaksi, 0, ',', '.') }}</p>
         </div>
 
-        <div class="bg-white border border-latte rounded-2xl p-5 shadow-sm flex items-center justify-between gap-4">
-            <div class="min-w-0">
+        <div class="bg-white border border-latte rounded-2xl p-5 shadow-sm">
+            <div class="flex items-center justify-between gap-2 mb-2">
                 <p class="text-xs font-semibold uppercase tracking-wider text-stone-500">Total Pendapatan</p>
-                <p class="font-mono-num text-2xl font-bold text-emerald-700 mt-1 truncate">
-                    Rp {{ number_format($totalPendapatan, 0, ',', '.') }}
-                </p>
+                <span class="w-9 h-9 rounded-xl bg-emerald-50 border border-emerald-200/70 text-emerald-600 flex items-center justify-center shrink-0">
+                    <i class="fas fa-money-bill-wave text-base"></i>
+                </span>
             </div>
-            <span class="w-12 h-12 rounded-2xl bg-emerald-50 border border-emerald-200/70 text-emerald-600 flex items-center justify-center shrink-0">
-                <i class="fas fa-money-bill-wave text-xl"></i>
-            </span>
+            <p class="font-mono-num text-xl sm:text-2xl font-bold text-emerald-700 whitespace-nowrap">
+                Rp {{ number_format($totalPendapatan, 0, ',', '.') }}
+            </p>
         </div>
 
-        <div class="bg-white border border-latte rounded-2xl p-5 shadow-sm flex items-center justify-between gap-4">
-            <div>
+        <div class="bg-white border border-latte rounded-2xl p-5 shadow-sm">
+            <div class="flex items-center justify-between gap-2 mb-2">
                 <p class="text-xs font-semibold uppercase tracking-wider text-stone-500">Total Pesanan</p>
-                <p class="font-mono-num text-3xl font-bold text-espresso mt-1">{{ number_format($totalPesanan, 0, ',', '.') }}</p>
+                <span class="w-9 h-9 rounded-xl bg-purple-50 border border-purple-200/70 text-purple-600 flex items-center justify-center shrink-0">
+                    <i class="fas fa-shopping-bag text-base"></i>
+                </span>
             </div>
-            <span class="w-12 h-12 rounded-2xl bg-purple-50 border border-purple-200/70 text-purple-600 flex items-center justify-center shrink-0">
-                <i class="fas fa-shopping-bag text-xl"></i>
-            </span>
+            <p class="font-mono-num text-2xl sm:text-3xl font-bold text-espresso">{{ number_format($totalPesanan, 0, ',', '.') }}</p>
         </div>
 
-        <div class="bg-white border border-latte rounded-2xl p-5 shadow-sm flex items-center justify-between gap-4">
-            <div class="min-w-0">
+        <div class="bg-white border border-latte rounded-2xl p-5 shadow-sm">
+            <div class="flex items-center justify-between gap-2 mb-2">
                 <p class="text-xs font-semibold uppercase tracking-wider text-stone-500">Rata-rata / Transaksi</p>
-                <p class="font-mono-num text-2xl font-bold text-caramel mt-1 truncate">
-                    Rp {{ number_format($rataRataTransaksi, 0, ',', '.') }}
-                </p>
+                <span class="w-9 h-9 rounded-xl bg-amber-50 border border-amber-200/70 text-caramel flex items-center justify-center shrink-0">
+                    <i class="fas fa-chart-line text-base"></i>
+                </span>
             </div>
-            <span class="w-12 h-12 rounded-2xl bg-amber-50 border border-amber-200/70 text-caramel flex items-center justify-center shrink-0">
-                <i class="fas fa-chart-line text-xl"></i>
-            </span>
+            <p class="font-mono-num text-xl sm:text-2xl font-bold text-caramel whitespace-nowrap">
+                Rp {{ number_format($rataRataTransaksi, 0, ',', '.') }}
+            </p>
         </div>
     </div>
 
@@ -180,7 +180,7 @@
     <!-- Category Sales & Top Menus -->
     <div class="grid lg:grid-cols-12 gap-6">
         <!-- Sales by Category -->
-        <div class="lg:col-span-5 bg-white border border-latte rounded-2xl p-6 shadow-sm">
+        <div class="lg:col-span-5 min-w-0 bg-white border border-latte rounded-2xl p-6 shadow-sm">
             <h3 class="font-serif text-xl font-bold text-espresso mb-4 flex items-center gap-2.5">
                 <i class="fas fa-chart-pie text-caramel text-base"></i>
                 <span>Penjualan per Kategori</span>
@@ -230,7 +230,7 @@
         </div>
 
         <!-- Top Selling Menus -->
-        <div class="lg:col-span-7 bg-white border border-latte rounded-2xl p-6 shadow-sm">
+        <div class="lg:col-span-7 min-w-0 bg-white border border-latte rounded-2xl p-6 shadow-sm">
             <h3 class="font-serif text-xl font-bold text-espresso mb-4 flex items-center gap-2.5">
                 <i class="fas fa-star text-gold text-base"></i>
                 <span>Menu Terlaris (Top 10)</span>
@@ -285,7 +285,7 @@
     </div>
 
     <!-- Daily Sales Visual Bar Chart + Table -->
-    <div class="bg-white border border-latte rounded-2xl p-6 shadow-sm">
+    <div class="bg-white border border-latte rounded-2xl p-6 shadow-sm min-w-0">
         <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
             <h3 class="font-serif text-xl font-bold text-espresso flex items-center gap-2.5">
                 <i class="fas fa-chart-bar text-caramel text-base"></i>
@@ -363,7 +363,7 @@
     </div>
 
     <!-- Hourly Sales Pattern (True 24-Column Horizontal Timeline) -->
-    <div class="bg-white border border-latte rounded-2xl p-6 shadow-sm">
+    <div class="bg-white border border-latte rounded-2xl p-6 shadow-sm min-w-0">
         <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
             <div>
                 <h3 class="font-serif text-xl font-bold text-espresso flex items-center gap-2.5">

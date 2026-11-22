@@ -110,7 +110,7 @@
                                 aria-label="Buka menu navigasi">
                             <i class="fas fa-bars"></i>
                         </button>
-                        <h1 class="font-serif text-xl sm:text-2xl font-bold text-espresso truncate">@yield('page-title', 'Dashboard')</h1>
+                        <h1 class="font-serif text-base sm:text-2xl font-bold text-espresso truncate">@yield('page-title', 'Dashboard')</h1>
                     </div>
 
                     <div class="flex items-center gap-3 sm:gap-4 shrink-0">
@@ -135,7 +135,7 @@
             </header>
 
             <!-- Content Area -->
-            <main class="flex-1 overflow-y-auto p-4 sm:p-6">
+            <main class="flex-1 overflow-y-auto overflow-x-hidden p-4 sm:p-6">
                 @include('partials.flash-alerts')
 
                 @yield('content')

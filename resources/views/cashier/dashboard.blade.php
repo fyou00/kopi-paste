@@ -44,17 +44,17 @@
             </div>
         </div>
 
-        <div class="bg-white border border-latte rounded-2xl p-5 shadow-sm flex items-center justify-between gap-4">
-            <div class="min-w-0">
+        <div class="bg-white border border-latte rounded-2xl p-5 shadow-sm">
+            <div class="flex items-center justify-between gap-2 mb-2">
                 <p class="text-xs font-semibold uppercase tracking-wider text-stone-500">Pendapatan Hari Ini</p>
-                <p class="font-mono-num text-2xl font-bold text-caramel mt-1 truncate">
-                    Rp {{ number_format($totalPendapatanHariIni, 0, ',', '.') }}
-                </p>
-                <p class="text-xs text-stone-500 mt-1">Akumulasi omzet hari ini</p>
+                <div class="w-9 h-9 rounded-xl bg-orange-50 border border-orange-200/70 text-caramel flex items-center justify-center shrink-0">
+                    <i class="fas fa-wallet text-base"></i>
+                </div>
             </div>
-            <div class="w-12 h-12 rounded-2xl bg-orange-50 border border-orange-200/70 text-caramel flex items-center justify-center shrink-0">
-                <i class="fas fa-wallet text-xl"></i>
-            </div>
+            <p class="font-mono-num text-xl sm:text-2xl font-bold text-caramel whitespace-nowrap">
+                Rp {{ number_format($totalPendapatanHariIni, 0, ',', '.') }}
+            </p>
+            <p class="text-xs text-stone-500 mt-1">Akumulasi omzet hari ini</p>
         </div>
     </div>
 

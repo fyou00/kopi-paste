@@ -107,22 +107,23 @@
                                 aria-label="Buka menu navigasi">
                             <i class="fas fa-bars"></i>
                         </button>
-                        <h1 class="font-serif text-xl sm:text-2xl font-bold text-espresso truncate">@yield('page-title', 'Dashboard')</h1>
+                        <h1 class="font-serif text-base sm:text-2xl font-bold text-espresso truncate">@yield('page-title', 'Dashboard')</h1>
                     </div>
 
                     <div class="flex items-center gap-3 sm:gap-4 shrink-0">
                         <span id="adminCurrentDate" class="hidden sm:inline-block text-xs font-medium text-stone-500"></span>
                         <a href="{{ route('home') }}"
-                           class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-cream border border-latte hover:border-caramel text-brown hover:text-espresso text-xs font-bold transition">
+                           title="Lihat Website"
+                           class="inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-xl bg-cream border border-latte hover:border-caramel text-brown hover:text-espresso text-xs font-bold transition">
                             <i class="fas fa-globe text-caramel"></i>
-                            <span>Lihat Website</span>
+                            <span class="hidden sm:inline">Lihat Website</span>
                         </a>
                     </div>
                 </div>
             </header>
 
             <!-- Content Area -->
-            <main class="flex-1 overflow-y-auto p-4 sm:p-6">
+            <main class="flex-1 overflow-y-auto overflow-x-hidden p-4 sm:p-6">
                 @include('partials.flash-alerts')
 
                 @yield('content')

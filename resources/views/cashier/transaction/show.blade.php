@@ -79,19 +79,24 @@
             <table class="w-full text-xs sm:text-sm">
                 <thead class="border-b border-stone-300 text-stone-500 text-[11px] uppercase">
                     <tr>
-                        <th class="text-left py-2">Item</th>
-                        <th class="text-center py-2">Qty</th>
-                        <th class="text-right py-2">Harga</th>
-                        <th class="text-right py-2">Subtotal</th>
+                        <th class="text-left py-2 pr-2">Item</th>
+                        <th class="text-center py-2 px-2">Qty</th>
+                        <th class="hidden sm:table-cell print:table-cell text-right py-2 px-2">Harga</th>
+                        <th class="text-right py-2 pl-2">Subtotal</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-stone-100">
                     @foreach($transaction->order->items as $item)
                     <tr>
-                        <td class="py-2.5 pr-2 font-semibold text-espresso">{{ $item->menu->nama ?? 'Menu' }}</td>
-                        <td class="py-2.5 text-center">{{ $item->qty }}</td>
-                        <td class="py-2.5 text-right text-stone-600">Rp {{ number_format($item->harga, 0, ',', '.') }}</td>
-                        <td class="py-2.5 text-right font-bold text-espresso">Rp {{ number_format($item->subtotal, 0, ',', '.') }}</td>
+                        <td class="py-2.5 pr-2 font-semibold text-espresso">
+                            <span>{{ $item->menu->nama ?? 'Menu' }}</span>
+                            <span class="block sm:hidden print:hidden text-[11px] text-stone-500 font-normal mt-0.5">
+                                @ Rp {{ number_format($item->harga, 0, ',', '.') }}
+                            </span>
+                        </td>
+                        <td class="py-2.5 px-2 text-center whitespace-nowrap">{{ $item->qty }}</td>
+                        <td class="hidden sm:table-cell print:table-cell py-2.5 px-2 text-right text-stone-600 whitespace-nowrap">Rp {{ number_format($item->harga, 0, ',', '.') }}</td>
+                        <td class="py-2.5 pl-2 text-right font-bold text-espresso whitespace-nowrap">Rp {{ number_format($item->subtotal, 0, ',', '.') }}</td>
                     </tr>
                     @endforeach
                 </tbody>

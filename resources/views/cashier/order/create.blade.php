@@ -9,9 +9,9 @@
 
     <div class="grid lg:grid-cols-12 gap-6 items-start pb-20 lg:pb-0">
         <!-- Left: POS Menu Selection -->
-        <div class="lg:col-span-8 space-y-5">
+        <div class="lg:col-span-8 min-w-0 space-y-5">
             <!-- Sticky Search & Category Pills -->
-            <div class="bg-white border border-latte rounded-2xl p-4 shadow-sm sticky top-0 z-20">
+            <div class="bg-white border border-latte rounded-2xl p-4 shadow-sm sticky top-0 z-20 max-w-full overflow-hidden">
                 <div class="relative mb-3.5">
                     <i class="fas fa-search absolute left-3.5 top-1/2 -translate-y-1/2 text-stone-400 text-sm"></i>
                     <input type="text"
@@ -120,7 +120,7 @@
         </div>
 
         <!-- Right: Order Summary -->
-        <div class="lg:col-span-4" id="orderSummaryPanel">
+        <div class="lg:col-span-4 min-w-0" id="orderSummaryPanel">
             <div class="bg-white border border-latte rounded-2xl p-5 sm:p-6 shadow-sm lg:sticky lg:top-4">
                 <div class="flex items-center justify-between mb-5 pb-3.5 border-b border-latte">
                     <div>

@@ -92,6 +92,14 @@ body {
     -webkit-backdrop-filter: blur(12px);
 }
 
+.navbar-scrolled {
+    background-color: rgba(26, 17, 11, 0.96) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.25);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
 @keyframes floatSlow {
     0%, 100% {
         transform: translateY(0px);
