@@ -1,0 +1,151 @@
+:root {
+    --kp-espresso: #1A110B;
+    --kp-roast: #2D1B12;
+    --kp-brown: #6B4423;
+    --kp-caramel: #C67A34;
+    --kp-gold: #E8B86D;
+    --kp-gold-dark: #D49E48;
+    --kp-cream: #FAF5EE;
+    --kp-latte: #EFE4D6;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    background-color: var(--kp-cream);
+    color: var(--kp-espresso);
+}
+
+.font-script {
+    font-family: 'Dancing Script', cursive;
+}
+
+.font-serif {
+    font-family: 'Playfair Display', Georgia, serif;
+}
+
+.font-sans {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+}
+
+.font-mono-num {
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-variant-numeric: tabular-nums;
+}
+
+.tabular-nums {
+    font-variant-numeric: tabular-nums;
+}
+
+/* Brand Buttons */
+.btn-gold {
+    background: linear-gradient(135deg, #E8B86D 0%, #D9A24E 100%);
+    color: #23140B;
+    font-weight: 600;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.btn-gold:hover {
+    background: linear-gradient(135deg, #F0C57D 0%, #D49E48 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(212, 158, 72, 0.35);
+}
+
+.btn-gold:active {
+    transform: translateY(0);
+}
+
+.btn-gold:focus-visible,
+.btn-espresso:focus-visible {
+    outline: 2px solid var(--kp-gold);
+    outline-offset: 2px;
+}
+
+.btn-espresso {
+    background: linear-gradient(135deg, #2D1B12 0%, #1A110B 100%);
+    color: #FAF5EE;
+    font-weight: 600;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.btn-espresso:hover {
+    background: linear-gradient(135deg, #3C2418 0%, #241710 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(26, 17, 11, 0.25);
+}
+
+/* Card & Navigation Helpers */
+.card-hover {
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 36px -12px rgba(26, 17, 11, 0.16);
+}
+
+.glass-nav {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+@keyframes floatSlow {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.animate-float {
+    animation: floatSlow 4.5s ease-in-out infinite;
+}
+
+/* Slim Warm Scrollbars */
+::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+}
+
+::-webkit-scrollbar-track {
+    background: #F4EDE3;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #C7B29B;
+    border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #9E7E5E;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Radio Card Active State */
+.radio-card {
+    transition: border-color 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.radio-card:has(input[type="radio"]:checked) {
+    border-color: var(--kp-caramel);
+    background-color: #FDF5EC;
+    box-shadow: 0 0 0 2px rgba(198, 122, 52, 0.2);
+}
+
+@media print {
+    .no-print {
+        display: none !important;
+    }
+}
